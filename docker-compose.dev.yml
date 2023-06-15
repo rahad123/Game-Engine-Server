@@ -1,0 +1,29 @@
+version: "3.4"
+services:
+  game-engine:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 3000:3000
+    restart: unless-stopped
+    depends_on:
+      - game-engine-mongo
+    command: npm run dev
+
+  game-engine-mongo:
+    image: mongo
+    restart: always
+    container_name: game-engine-mongo
+    volumes:
+      - ./.docker/db_data:/var/lib/mongo/data
+      - ./.docker/data:/dump
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
