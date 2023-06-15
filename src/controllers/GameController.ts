@@ -39,7 +39,6 @@ export class GameController {
   @Post('/games')
   async createGame(@Body() payload, @Res() res: Response) {
     try {
-      console.log('payload', payload);
       const validateSiteRequest = this.gameValidator
         .createGameValidator()
         .validate(payload);
@@ -47,7 +46,6 @@ export class GameController {
         return res.status(422).send('UNPROCESSABLE_ENTITY');
       }
       const createGame = await this.appService.createGame(payload);
-      console.log('createGame', createGame);
       res.status(201).json(createGame);
     } catch (err) {
       throw new HttpException(
@@ -60,7 +58,6 @@ export class GameController {
   @Get('/games/:id')
   async getGame(@Param('id') id: string, @Res() res: Response) {
     try {
-      console.log('is');
       const game = await this.appService.getGame(id);
       res.json({
         game: game,
