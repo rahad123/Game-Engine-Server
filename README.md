@@ -48,8 +48,6 @@ $ npm run start:prod
 ## Test
 
 ```bash
-# unit tests
-$ npm run test
 
 # e2e tests
 $ npm run test:e2e
@@ -66,7 +64,6 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 - Author - [Shidul Islam](shidul.netlify.app/)
 - Website - [shidul.netlify.app/](shidul.netlify.app/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
 ## License
 
